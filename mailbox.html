@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+	<title>mailbox</title>
+
+	<style>
+		body {
+			background-color: #a8a8a8;
+			overflow: hidden;
+			margin: 0;
+
+		}
+
+		#image {
+			position: absolute;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100vw;
+			height: 100vh;
+			z-index: 1;
+			background-image: url("https://blob.gifcities.org/gifcities/3L67I2R5X4JKZVHBVMHLQQHYIRB5MGMR.gif");
+		}
+		
+		#realimage{
+			width: 100vw;
+			opacity: 96%;
+		}
+		
+		#text{
+			position: relative;
+			width: 100vw;
+			height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			color: black;
+			z-index: 100;
+			text-align: center;
+		}
+
+		#textbox {
+			width: 30vw;
+			display: block;
+		}
+
+		button{
+		cursor: wait;
+		margin-bottom: 30px;
+		}
+		
+		#stamps1 {
+			display: flex;
+			flex-direction: row;
+			gap: 1vw;
+		}
+		
+	</style>
+</head>
+    <body>
+
+        <div id="image">
+			<img src="paper.png"  id="realimage"></img>
+		</div>
+
+
+		<div id="text">
+			<div id="stamps1">
+			<img src="https://blob.gifcities.org/gifcities/2EIO5VKO5RQYAAURCEIOB6RXKAFI44HP.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/NGQ5D53RKMTAXC2V5OG6YOHNM3YHCAUB.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/44C2ROP7SYVABQ6V2MUNGJ4VNGFUOVQG.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/NPWVIPOOTR2I3WUIFJQOBUYGMBOZDOOR.gif" width="100vw" id="stamp">
+			</div>
+
+			<div id="textbox">
+			<p><b>This home began construction during the Welcome to my Homepage web residency at The Museum of Human Achievement!</b><br><br>
+			myhappyhome is an interactive online experience in which the user explores the parallels of the uncertainty that the world holds through a lens of RNG. This is explored in a space that most consider safe and most predictable, the home. Inspired by my own personal experience and frustrations with ruminating on anxiety within the home, myhappyhome serves as a reflection and form of exposure to these situations that constantly run through my mind. In doing so, I trivialize these fears as I represent them and the “correct” choices as if I live in a world in which these things do happen. Like all happy homes, this one will continue construction and maintenance as time moves forward.
+			</p>
+			</div>
+			<a href="https://myhappyhome.net/">
+			<button>go home</button>
+			</a>
+			<div id="stamps1">
+			<img src="https://blob.gifcities.org/gifcities/I5AXRCMYOTHOWU3SQ243ZSF7JEHAVYEU.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/IO7LAJHCVSJTJJYWUWKLYT2KQ6ZBTZWY.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/OJI236JIH4EA353NVZ3U6LKQ6Z2E6KTV.gif" width="100vw" id="stamp">
+			<img src="https://blob.gifcities.org/gifcities/ZZSAZUNVMNNM5RFBAPIPKDZWUAMRP2XJ.gif" width="100vw" id="stamp">
+			</div>
+		</div>
+    </body>
+</html>

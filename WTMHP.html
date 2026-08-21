@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- 2025-2026 - By Antz from AntzGames -->
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>myhappyhome</title>
+    <style>
+        body {
+            touch-action: none;
+            margin: 0;
+            border: 0 none;
+            padding: 0;
+            text-align: center;
+            background-color: white;  
+            background-image: url(bg.png);
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+            /* change the built in browser progress color */
+            progress {
+                accent-color: white; /* #1C77DB  */
+            }
+
+
+        #canvas {
+            display: block;
+            margin: 0;
+            color: white;
+            z-index: 100;
+        }
+
+
+        #canvas:focus {
+            outline: none;
+        }
+
+
+        img {
+            display: none;
+            width: 50%;
+            margin: auto;
+        }
+
+
+        #status-progress {
+            display: none;
+            margin: 0 auto;
+        }
+       
+
+
+        #loading:hover, #loadingImage:hover{
+            cursor: wait;
+        }
+
+
+        #loading {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+
+
+
+
+
+    </style>
+
+
+    <link id='-gd-engine-icon' rel='icon' type='image/png' href='index.icon.png' />
+    <link rel='apple-touch-icon' href='index.apple-touch-icon.png' />
+</head>
+
+
+<body>
+    <canvas id="canvas">
+        HTML5 canvas appears to be unsupported in the current browser.<br>
+        Please try updating or use a different browser.
+    </canvas>
+
+
+    <noscript>
+        Your browser does not support JavaScript.
+    </noscript>
+
+
+
+
+    <div id="loading">
+        <img id="loadingImage" src="loading.png">
+        <div id="status">
+            <progress id="status-progress"></progress>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--    Add other images buttons here - you are resposibly for any HTML/CSS/JS to make it look good and work.
+        This is just an example. Uncomment <div> below to have a simple wishlist button forward to the steam store.
+        Remember all <img> tags will be hidden initially (display:none), so you need to explicitly set them in HTML or JS code.
+    -->
+    <!--
+    <div id="other_images">
+        <a href="https://store.steampowered.com/" target="_blank" rel="noopener noreferrer">
+            <img id="wishlistImage" src="wishlist_on_steam.png" style="width:10%; display:block">
+        </a>
+    </div>
+    -->
+
+
+
+
+    <script src="WTMHP.js"></script>
+    <script>
+        const statusOverlay = document.getElementById('status');
+        const statusProgress = document.getElementById('status-progress');
+        const loadingImage = document.getElementById('loadingImage');
+
+
+            loadingImage.style.display = 'none'
+
+
+        // This swaps the CLICKME image with the LOADING image when user clicks
+            statusProgress.style.display = 'block';
+            loadingImage.style.display = 'block'
+            loadGame();
+
+
+        function loadGame(elem) {
+            // Force fullscreen - comment out if(){} statement if you dont want fullscreen
+            elem = elem || document.documentElement;
+            // if (!document.fullscreenElement && !document.mozFullScreenElement &&
+            //  !document.webkitFullscreenElement && !document.msFullscreenElement) {
+            //  if (elem.requestFullscreen) {
+            //      elem.requestFullscreen();
+            //  } else if (elem.msRequestFullscreen) {
+            //      elem.msRequestFullscreen();
+            //  } else if (elem.mozRequestFullScreen) {
+            //      elem.mozRequestFullScreen();
+            //  } else if (elem.webkitRequestFullscreen) {
+            //      elem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            //  }
+            //}
+
+
+            var engine = new Engine({"args":[],"canvasResizePolicy":1,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"WTMHP","experimentalVK":false,"fileSizes":{"WTMHP.pck":19505420,"WTMHP.wasm":37900721},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
+            engine.startGame({
+                'onProgress': function (current, total) {
+                    if (current > 0 && total > 0) {
+                        statusProgress.value = current;
+                        statusProgress.max = total;
+                        //console.log('Loaded ' + current + ' of ' + total);
+                    } else {
+                        statusProgress.removeAttribute('value');
+                        statusProgress.removeAttribute('max');
+                    }
+                },
+            }).then(() => {
+                // Happens when Godot engine has started, so remove progress bar
+                statusOverlay.remove();
+                loadingImage.remove();
+                console.log('Engine has started!');
+            });;
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
